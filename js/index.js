@@ -1,14 +1,15 @@
 'use strict'
+import {loadData} from './loadData.js'
 
-import  catalog from './catalog.js';
 import generateHeader from './generateHeader.js';
 import generateFooter from './generateFooter.js';
 import generateCatalog from  './genetateCatalog.js';
-import generateSubCatalog from './generateSubCatalog.js'
+//import generateSubCatalog from './generateSubCatalog.js'
 
 
 generateHeader();
 generateFooter();
 generateCatalog();
-generateSubCatalog();
-catalog();
+//generateSubCatalog();
+
+loadData()
