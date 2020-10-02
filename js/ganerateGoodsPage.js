@@ -18,7 +18,7 @@ const generateGoodsPage = () => {
 						<article class="goods-item">
 							<div class="goods-item__img">
 								<img src=">${item.img[0]}"
-									 data-second-image="${item.img[1]}" alt="ФАБЛЕР БЬЁРН">
+									 data-second-image="${item.img[1]}" alt="${item.name}">
 							</div>
 							<p class="goods-item__new">Новинка</p>
 							<h3 class="goods-item__header">${item.name}</h3>
@@ -27,7 +27,7 @@ const generateGoodsPage = () => {
 								<span class="goods-item__price-value">${item.price}</span>
 								<span class="goods-item__currency"> ₽</span>
 							</p>
-							<button class="btn btn-add-card" aria-label="Добравить в корзину" data-idd="idd001"></button>
+							<button class="btn btn-add-card" aria-label="Добравить в корзину" data-idd="${item.id}"></button>
 						</article>
 					</a>
 				</li>
