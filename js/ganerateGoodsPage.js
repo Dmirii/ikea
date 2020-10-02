@@ -17,7 +17,7 @@ const generateGoodsPage = () => {
 					<a class="goods-item__link" href="card.html#idd001">
 						<article class="goods-item">
 							<div class="goods-item__img">
-								<img src=">${item.img[0]}"
+								<img src="${item.img[0]}"
 									 data-second-image="${item.img[1]}" alt="${item.name}">
 							</div>
 							<p class="goods-item__new">Новинка</p>
