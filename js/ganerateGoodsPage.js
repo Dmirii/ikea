@@ -34,7 +34,9 @@ const generateGoodsPage = () => {
             `)
             
         });
-
+        if(goodsList.textContent==''){
+            goodsList.textContent='Ничего нету :(' 
+        }
     }
 
     if(location.pathname.includes('goods') && location.search){
@@ -44,8 +46,8 @@ const generateGoodsPage = () => {
         //console.log('prop: '+ prop + 'val: ' + value);
 
         if(prop == 's'){
-            getData.serch(value,  generateCards)
-            mainHeader.textContent = `Список желаний:`;
+            getData.search(value,  generateCards)
+            mainHeader.textContent = `Поиск: ${value}`;
         } else if(prop == 'wishlist'){
             getData.wishlist(wishList, generateCards);
             mainHeader.textContent = `Список желаний:`;
