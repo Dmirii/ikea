@@ -8,24 +8,23 @@ const generateCartPage = () => {
 
     const generateCart = (data) => {
         cartList.textContent='';
-        let totalPrice ='';
+        let totalPrice =0;
         
         data.forEach(item => {
             
-
-            
-           
-
+        
             const { category, count, subcategory, name:itemName, img , description , price , id } = item;
             let option ='';
             let countUser = userData.cartList.find(item => item.id === id).count;
-             if(countUser > count){
+
+            if(countUser > count){
                 countUser = count;
             }
 
             for (let i =1; i<= count; i++){
                 option += ` <option value=${i} ${ countUser ===i ? 'selected' : ''}>${i}</option>`
             }
+            totalPrice += countUser * price;
 
             cartList.insertAdjacentHTML('beforeend', `
             <li class="cart-item">
@@ -70,13 +69,16 @@ const generateCartPage = () => {
 			</li>
             `)
             
-        });    
+        });   
+        
+        cartTotalPrice.textContent = totalPrice;
     
 
     };
 
     if(location.pathname.includes('cart')){
         getData.cart(userData.cartList , generateCart );
+
         cartList.addEventListener('change', event => {
             console.log(event.target.dataset.idd);
             console.log(parseInt(event.target.value))
@@ -84,7 +86,21 @@ const generateCartPage = () => {
                 id: event.target.dataset.idd,
                 count: parseInt(event.target.value),
             }
+           
             getData.cart(userData.cartList , generateCart );
+        })
+
+        cartList.addEventListener('click', event => {
+            const target = event.target;
+         
+            const btnRemove = target.closest('.btn-remove');
+            if(btnRemove){
+                
+            userData.deleteCart = btnRemove.dataset.idd;
+            getData.cart(userData.cartList , generateCart );
+
+            }
+         
         })
     }
 

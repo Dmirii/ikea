@@ -46,6 +46,16 @@ const userData = {
         obj.count = itemCart.count;       
      
         setLocalStorage('cartlist', this.cartList)
+    },
+
+    set deleteCart(idd){
+        let index = -1;
+        this.cartList.forEach( (item,i) => {
+            if(item.id == idd){
+                index = i;
+            }
+        } );
+        this.cartList.splice(index,1);
 
 
     }
